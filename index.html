@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Vale | Celulares — São José dos Campos</title>
+  <meta name="description" content="Smart Vale — loja de celulares em Vista Verde, São José dos Campos. Samsung, Motorola, iPhone, Xiaomi, acessórios e assistência técnica.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --bg:         #07090E;
+      --bg-2:       #0C1B3E;
+      --bg-3:       #0C1B3E;
+      --card:       #0F1325;
+      --card-lt:    #132445;
+      --card-hover: #141830;
+      --card-lt-hover: #192D55;
+      --primary:    #1D72F5;
+      --primary-lt: #4A91FF;
+      --accent:     #F07830;
+      --teal:       #0AC8D4;
+      --text:       #E8EEFF;
+      --muted:      #7A83A6;
+      --border:     rgba(255,255,255,0.07);
+      --border-md:  rgba(255,255,255,0.12);
+      --glow-blue:  rgba(29,114,245,0.25);
+      --shadow-lg:  0 40px 80px rgba(0,0,0,0.6);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+    h1, h2, h3, h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      line-height: 1.05;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+    h1 { font-size: clamp(3rem, 6.5vw, 5.8rem); font-weight: 400; }
+    h2 { font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 400; }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; letter-spacing: 0.04em; }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transition:
+        opacity  0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .from-top    { transform: translateY(-52px); }
+    .from-bottom { transform: translateY(60px); }
+    .from-left   { transform: translateX(-65px); }
+    .from-right  { transform: translateX(65px); }
+    .from-scale  { transform: scale(0.88); }
+    .reveal.in   { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+    .d5 { transition-delay: 0.40s; }
+    .d6 { transition-delay: 0.50s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────── */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+    section { position: relative; }
+
+    /* ─── WAVE DIVIDERS ──────────────────────────────────────── */
+    .wave {
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+      z-index: 2;
+    }
+    .wave svg { display: block; width: 100%; }
+
+    /* ─── BUTTONS ────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600; font-size: .95rem;
+      padding: .875rem 1.75rem;
+      border-radius: 12px;
+      cursor: pointer; border: none;
+      transition: transform .35s cubic-bezier(0.16,1,0.3,1), box-shadow .35s cubic-bezier(0.16,1,0.3,1), background-color .25s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-blue {
+      background: var(--primary); color: #fff;
+      box-shadow: 0 6px 24px rgba(29,114,245,.35);
+    }
+    .btn-blue:hover {
+      background: var(--primary-lt);
+      box-shadow: 0 10px 32px rgba(29,114,245,.45);
+    }
+    .btn-wa {
+      background: #25D366; color: #fff;
+      box-shadow: 0 6px 24px rgba(37,211,102,.3);
+    }
+    .btn-wa:hover {
+      background: #22c55e;
+      box-shadow: 0 10px 32px rgba(37,211,102,.4);
+    }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1.5px solid var(--border-md);
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,.24);
+      background: rgba(255,255,255,.05);
+    }
+
+    /* ─── PILL TAGS ──────────────────────────────────────────── */
+    .tag {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: rgba(29,114,245,.12);
+      color: #6BADFF;
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: .3rem .85rem;
+      border-radius: 100px;
+      border: 1px solid rgba(29,114,245,.2);
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────────────────── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .35s, backdrop-filter .35s, border-color .35s;
+      border-bottom: 1px solid transparent;
+    }
+    #nav.solid {
+      background: rgba(7,9,14,.92);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      backdrop-filter: blur(20px) saturate(160%);
+      border-color: var(--border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .nav-logo .dot { color: var(--primary); }
+    .nav-links {
+      display: flex; align-items: center; gap: 2.25rem;
+    }
+    .nav-links a {
+      color: var(--muted); font-size: .9rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--primary); color: #fff !important;
+      padding: .5rem 1.25rem;
+      border-radius: 10px; font-weight: 600 !important;
+      transition: background .2s, transform .2s !important;
+    }
+    .nav-cta:hover { background: var(--primary-lt) !important; transform: translateY(-1px); }
+
+    /* Hamburger */
+    .nav-ham {
+      display: none; background: none; border: none;
+      color: var(--text); cursor: pointer; padding: .4rem;
+    }
+    .nav-ham svg { display: block; }
+
+    /* Mobile overlay */
+    .mob-nav {
+      position: fixed; inset: 0; z-index: 120;
+      background: rgba(7,9,14,.97);
+      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(24px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 2.25rem;
+      transform: translateY(-105%);
+      transition: transform .42s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mob-nav.open { transform: translateY(0); }
+    .mob-nav a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem; font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text); transition: color .2s;
+    }
+    .mob-nav a:hover { color: var(--primary); }
+    .mob-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: none; border: none; color: var(--muted);
+      cursor: pointer; transition: color .2s;
+    }
+    .mob-close:hover { color: var(--text); }
+
+    /* ─────────────────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100svh;
+      background:
+        radial-gradient(ellipse 60% 60% at 75% 55%, rgba(29,114,245,.13) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(240,120,48,.09) 0%, transparent 55%),
+        var(--bg);
+      padding: 7rem 1.5rem 12rem;
+      display: flex; align-items: center;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem; align-items: center;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .8rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 22px; height: 2px;
+      background: var(--primary); border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .hero-title { margin-bottom: 1.4rem; }
+    .hero-title .hi { color: var(--primary); }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--muted);
+      line-height: 1.75; max-width: 460px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── Phone Mockup ── */
+    .phone-wrap {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .phone-glow {
+      position: absolute;
+      width: 380px; height: 500px;
+      background: radial-gradient(circle, rgba(29,114,245,.32) 0%, transparent 65%);
+      filter: blur(75px);
+      pointer-events: none;
+    }
+    .hero-phone-img {
+      position: relative;
+      z-index: 1;
+      width: 300px;
+      max-width: 100%;
+      animation: float 4.5s ease-in-out infinite;
+      filter:
+        drop-shadow(0 40px 70px rgba(0,0,0,.6))
+        drop-shadow(0 0 50px rgba(29,114,245,.25));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-phone-img { animation: none; }
+    }
+    .phone {
+      position: relative;
+      width: 236px;
+      background: #10131E;
+      border-radius: 42px;
+      border: 2px solid rgba(255,255,255,.1);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,.6),
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255,255,255,.1),
+        0 0 60px rgba(29,114,245,.18);
+      overflow: visible;
+      animation: float 4.5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50%       { transform: translateY(-14px) rotate(1deg); }
+    }
+    /* side buttons */
+    .phone::before {
+      content: '';
+      position: absolute; left: -4px; top: 82px;
+      width: 4px; height: 34px;
+      background: rgba(255,255,255,.08);
+      border-radius: 4px 0 0 4px;
+      box-shadow: 0 46px 0 rgba(255,255,255,.08);
+    }
+    .phone::after {
+      content: '';
+      position: absolute; right: -4px; top: 100px;
+      width: 4px; height: 58px;
+      background: rgba(255,255,255,.07);
+      border-radius: 0 4px 4px 0;
+    }
+    .phone-island {
+      width: 100px; height: 30px;
+      background: #000;
+      border-radius: 0 0 22px 22px;
+      margin: 0 auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,.6);
+      position: relative; z-index: 2;
+    }
+    .phone-screen {
+      background: linear-gradient(160deg, #0D1E45 0%, #070914 55%, #06090E 100%);
+      min-height: 455px;
+      border-radius: 0 0 40px 40px;
+      padding: 14px;
+      display: flex; flex-direction: column; gap: 10px;
+      overflow: hidden;
+    }
+    .scr-top {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .scr-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px; font-weight: 800; color: #fff;
+    }
+    .scr-logo span { color: var(--primary); }
+    .scr-status {
+      display: flex; gap: 4px; align-items: center;
+    }
+    .scr-dot {
+      width: 6px; height: 6px; background: var(--primary);
+      border-radius: 50%; opacity: .7;
+    }
+    .scr-feature {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px; padding: 14px;
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+    }
+    .scr-phone-shape {
+      width: 64px; height: 96px;
+      background: rgba(255,255,255,.1);
+      border-radius: 14px;
+      border: 1.5px solid rgba(255,255,255,.18);
+      position: relative;
+    }
+    .scr-phone-shape::before {
+      content: '';
+      position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+      width: 22px; height: 3px;
+      background: rgba(255,255,255,.2); border-radius: 3px;
+    }
+    .scr-phone-shape::after {
+      content: '';
+      position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+      width: 18px; height: 3px;
+      background: rgba(29,114,245,.5); border-radius: 3px;
+    }
+    .scr-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px; font-weight: 800; color: #fff;
+    }
+    .scr-price-lbl {
+      font-size: 10px; color: rgba(255,255,255,.45);
+      text-align: center; margin-top: -6px;
+    }
+    .scr-cta {
+      background: var(--primary); border-radius: 10px;
+      height: 34px; display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: #fff;
+      letter-spacing: .04em;
+    }
+    .scr-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    .scr-chip {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 10px; height: 36px;
+      display: flex; align-items: center; padding: 0 10px; gap: 6px;
+    }
+    .scr-chip-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+    }
+    .scr-chip-txt {
+      font-size: 10px; font-weight: 600; color: rgba(255,255,255,.55);
+    }
+    .phone-bar {
+      width: 34%; height: 4px;
+      background: rgba(255,255,255,.15); border-radius: 4px;
+      margin: 8px auto;
+    }
+
+    /* floating badges */
+    .badge {
+      position: absolute;
+      background: rgba(15,19,37,.92);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-md);
+      border-radius: 12px; padding: .5rem .85rem;
+      display: flex; align-items: center; gap: .45rem;
+      font-size: .78rem; font-weight: 600; color: var(--text);
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    }
+    .badge-star { right: -2.5rem; top: 18%; animation: badge-float 3.5s ease-in-out infinite; }
+    .badge-check { left: -2.5rem; bottom: 24%; animation: badge-float 4s ease-in-out infinite .7s; }
+    .badge-ic { width: 20px; height: 20px; }
+    @keyframes badge-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       BRANDS
+    ───────────────────────────────────────────────────────── */
+    #marcas {
+      background: var(--bg-2);
+      padding: 6rem 1.5rem 12rem;
+    }
+    .brands-hd { text-align: center; margin-bottom: 3.5rem; }
+    .brands-hd h2 { margin-top: .75rem; }
+    .brands-hd p { color: var(--muted); margin-top: .75rem; font-size: 1rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .brands-grid {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1.25rem;
+    }
+    .brand-card {
+      background: var(--card-lt);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.5rem 2rem;
+      min-width: 140px; text-align: center;
+      cursor: pointer;
+      transition: border-color .25s, transform .25s, background .25s, box-shadow .25s;
+    }
+    .brand-card:hover {
+      border-color: rgba(29,114,245,.4);
+      background: rgba(29,114,245,.06);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    }
+    .brand-logo {
+      height: 44px; width: auto; max-width: 130px;
+      object-fit: contain;
+      margin: 0 auto .85rem;
+      display: block;
+    }
+    .brand-logo-samsung { height: 68px; }
+    .brand-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400; font-size: 1.2rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .brand-sub { font-size: .72rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ─────────────────────────────────────────────────────────
+       SERVICES
+    ───────────────────────────────────────────────────────── */
+    #servicos {
+      background: var(--bg);
+      padding: 7rem 1.5rem 9rem;
+    }
+    .sec-hd { margin-bottom: 3.5rem; }
+    .sec-hd h2 { margin-top: .75rem; }
+    .sec-hd p { color: var(--muted); margin-top: .75rem; font-size: 1rem; max-width: 540px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
+    }
+    .svc-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px; padding: 2rem;
+      cursor: pointer;
+      transition: border-color .25s, transform .25s, background .25s, box-shadow .25s;
+    }
+    .svc-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.4);
+    }
+    .svc-card:nth-child(1):hover { border-color: rgba(29,114,245,.35); background: rgba(29,114,245,.04); }
+    .svc-card:nth-child(2):hover { border-color: rgba(240,120,48,.35); background: rgba(240,120,48,.04); }
+    .svc-card:nth-child(3):hover { border-color: rgba(10,200,212,.35); background: rgba(10,200,212,.04); }
+    .svc-card:nth-child(4):hover { border-color: rgba(168,85,247,.35); background: rgba(168,85,247,.04); }
+    .svc-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.3rem;
+    }
+    .svc-icon.blue   { background: rgba(29,114,245,.14); color: #4A91FF; }
+    .svc-icon.orange { background: rgba(240,120,48,.14);  color: #F5943A; }
+    .svc-icon.teal   { background: rgba(10,200,212,.14);  color: #0AC8D4; }
+    .svc-icon.purple { background: rgba(168,85,247,.14);  color: #C77EFF; }
+    .svc-card h3 { margin-bottom: .5rem; }
+    .svc-card p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─────────────────────────────────────────────────────────
+       WHY US
+    ───────────────────────────────────────────────────────── */
+    #diferenciais {
+      background: var(--bg-3);
+      padding: 7rem 1.5rem 9rem;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .why-list { display: flex; flex-direction: column; gap: 2rem; }
+    .why-item { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .why-ic {
+      width: 46px; height: 46px; flex-shrink: 0;
+      border-radius: 13px;
+      background: rgba(29,114,245,.12);
+      border: 1px solid rgba(29,114,245,.2);
+      display: flex; align-items: center; justify-content: center;
+      color: #5BA8FF;
+    }
+    .why-item h3 { font-size: .98rem; margin-bottom: .3rem; }
+    .why-item p  { font-size: .85rem; color: var(--muted); line-height: 1.55; }
+    .why-visual {
+      background: var(--card-lt);
+      border: 1px solid var(--border-md);
+      border-radius: 26px; padding: 0;
+      position: relative; overflow: hidden;
+    }
+    .why-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 26px;
+      min-height: 320px;
+    }
+    .why-visual::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(29,114,245,.2), transparent 65%);
+      pointer-events: none;
+    }
+    .stat-row { margin-bottom: 1.75rem; }
+    .stat-row:last-child { margin-bottom: 0; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem; font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--primary); line-height: 1;
+    }
+    .stat-lbl { font-size: .82rem; color: var(--muted); margin-top: .25rem; }
+    .stat-div { height: 1px; background: var(--border); margin: 1.5rem 0; }
+
+    /* ─────────────────────────────────────────────────────────
+       TESTIMONIALS
+    ───────────────────────────────────────────────────────── */
+    #depoimentos {
+      background: var(--bg);
+      padding: 7rem 0 9rem;
+    }
+    .dep-hd { text-align: center; margin-bottom: 2.5rem; padding: 0 1.5rem; }
+    .dep-hd h2 { margin-top: .75rem; }
+    .dep-hd p { color: var(--muted); margin-top: .75rem; font-size: 1rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .dep-google-row, .dep-google-badge {
+      display: inline-flex; align-items: center; gap: .65rem;
+      background: var(--card); border: 1px solid var(--border-md);
+      border-radius: 100px; padding: .45rem 1.25rem;
+      margin-top: 1.25rem;
+    }
+    .dep-google-ico, .dep-google-logo { height: 17px; width: auto; display: block; }
+    .dep-google-stars { color: #FBBF24; font-size: .88rem; letter-spacing: .06em; }
+    .dep-google-score { font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem; letter-spacing: .04em; color: var(--text); }
+    .dep-google-lbl { font-size: .78rem; color: var(--muted); }
+    /* Carousel */
+    .dep-carousel-wrap {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+      padding: .75rem 0 1.5rem;
+    }
+    .dep-track {
+      display: flex; gap: 1.4rem;
+      width: max-content;
+      animation: dep-scroll 110s linear infinite;
+      will-change: transform;
+    }
+    .dep-track .dep-card { width: 295px; flex-shrink: 0; }
+    @keyframes dep-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .dep-track { animation-play-state: paused; }
+    }
+    .dep-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 22px; padding: 1.75rem;
+    }
+    .stars { color: #FBBF24; font-size: .95rem; letter-spacing: .07em; margin-bottom: .9rem; }
+    .dep-txt { font-size: .88rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.3rem; font-style: italic; }
+    .dep-author { display: flex; align-items: center; gap: .75rem; }
+    .dep-av {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+      font-size: .95rem; letter-spacing: .04em; color: #fff; flex-shrink: 0;
+    }
+    .dep-av.a1 { background: linear-gradient(135deg, var(--primary), #2DD4BF); }
+    .dep-av.a2 { background: linear-gradient(135deg, #8B5CF6, var(--primary)); }
+    .dep-av.a3 { background: linear-gradient(135deg, var(--accent), #F59E0B); }
+    .dep-av.a4 { background: linear-gradient(135deg, #0AC8D4, #0D9488); }
+    .dep-av.a5 { background: linear-gradient(135deg, #EC4899, #8B5CF6); }
+    .dep-av.a6 { background: linear-gradient(135deg, #3B82F6, #1E40AF); }
+    .dep-name { font-weight: 600; font-size: .88rem; }
+    .dep-detail { font-size: .76rem; color: var(--muted); margin-top: .1rem; }
+
+    /* ─────────────────────────────────────────────────────────
+       LOCATION
+    ───────────────────────────────────────────────────────── */
+    #localizacao {
+      background: var(--bg-2);
+      padding: 7rem 1.5rem 8rem;
+    }
+    .loc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .loc-info h2 { margin-bottom: 1.5rem; }
+    .loc-items { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2.25rem; }
+    .loc-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .loc-ic {
+      width: 42px; height: 42px; flex-shrink: 0;
+      border-radius: 11px;
+      background: rgba(29,114,245,.12);
+      border: 1px solid rgba(29,114,245,.18);
+      display: flex; align-items: center; justify-content: center;
+      color: #5BA8FF;
+    }
+    .loc-item strong { display: block; font-weight: 600; font-size: .88rem; margin-bottom: .2rem; }
+    .loc-item span   { font-size: .84rem; color: var(--muted); line-height: 1.55; }
+    .map-box {
+      border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--border-md);
+      height: 400px;
+      box-shadow: var(--shadow-lg);
+    }
+    .map-box iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ─────────────────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────────────────── */
+    footer {
+      background: #030408;
+      padding: 4.5rem 1.5rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 3rem;
+    }
+    .foot-brand .nav-logo { margin-bottom: 1rem; }
+    .foot-desc { font-size: .85rem; color: var(--muted); line-height: 1.75; max-width: 270px; }
+    .foot-hl {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem; font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text); margin-bottom: 1.25rem;
+    }
+    .foot-links { display: flex; flex-direction: column; gap: .75rem; }
+    .foot-links a { font-size: .85rem; color: var(--muted); transition: color .2s; }
+    .foot-links a:hover { color: var(--text); }
+    .foot-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .78rem; color: var(--muted);
+      flex-wrap: wrap; gap: .75rem;
+    }
+    .foot-bottom a { color: var(--muted); transition: color .2s; }
+    .foot-bottom a:hover { color: var(--text); }
+
+    /* ─────────────────────────────────────────────────────────
+       FLOATING WHATSAPP
+    ───────────────────────────────────────────────────────── */
+    .wa-float {
+      position: fixed; bottom: 2rem; right: 2rem;
+      z-index: 200;
+      width: 60px; height: 60px;
+      background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 28px rgba(37,211,102,.45);
+      animation: wa-bounce-spin 3s ease-in-out infinite;
+    }
+    @keyframes wa-bounce-spin {
+      0%   { transform: translateY(0)     perspective(200px) rotateY(0deg);   animation-timing-function: cubic-bezier(0.215,0.61,0.355,1); }
+      18%  { transform: translateY(-14px) perspective(200px) rotateY(180deg); animation-timing-function: cubic-bezier(0.55,0.055,0.675,0.19); }
+      34%  { transform: translateY(0)     perspective(200px) rotateY(360deg); }
+      100% { transform: translateY(0)     perspective(200px) rotateY(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wa-float { animation: none; }
+    }
+    .wa-tooltip {
+      position: absolute; right: 72px; top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15,19,37,.95);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-md);
+      color: var(--text); font-size: .8rem; font-weight: 600;
+      padding: .45rem .9rem; border-radius: 10px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0; transition: opacity .2s;
+    }
+    .wa-float:hover .wa-tooltip { opacity: 1; }
+
+    /* ─────────────────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-eyebrow { justify-content: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .phone-wrap { display: none; }
+      .why-grid  { grid-template-columns: 1fr; gap: 3rem; }
+      .loc-grid  { grid-template-columns: 1fr; gap: 3rem; }
+      .foot-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .foot-desc { max-width: 100%; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-ham   { display: flex; }
+      h1 { font-size: clamp(2rem, 8vw, 3rem); }
+      section { padding-left: 1rem; padding-right: 1rem; }
+    }
+    @media (max-width: 480px) {
+      .brands-grid { gap: .85rem; }
+      .brand-card  { min-width: 110px; padding: 1.1rem 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ────────────────────────────────────────────────────────
+     NAVIGATION
+──────────────────────────────────────────────────────── -->
+<header>
+  <nav id="nav" role="navigation" aria-label="Menu principal">
+    <a href="#hero" class="nav-logo" aria-label="Smart Vale — página inicial">
+      Smart<span class="dot">Vale</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#marcas">Marcas</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#diferenciais">Sobre</a></li>
+      <li><a href="#localizacao">Localização</a></li>
+      <li>
+        <a href="https://wa.me/5512997344736" class="nav-cta" target="_blank" rel="noopener">
+          WhatsApp
+        </a>
+      </li>
+    </ul>
+
+    <button class="nav-ham" aria-label="Abrir menu" id="hamBtn">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <line x1="3" y1="6"  x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+
+  <div class="mob-nav" id="mobNav" role="dialog" aria-modal="true" aria-label="Menu mobile">
+    <button class="mob-close" id="mobClose" aria-label="Fechar menu">
+      <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <line x1="18" y1="6"  x2="6"  y2="18"/>
+        <line x1="6"  y1="6"  x2="18" y2="18"/>
+      </svg>
+    </button>
+    <a href="#marcas"      class="mob-link">Marcas</a>
+    <a href="#servicos"    class="mob-link">Serviços</a>
+    <a href="#diferenciais" class="mob-link">Sobre</a>
+    <a href="#localizacao" class="mob-link">Localização</a>
+    <a href="https://wa.me/5512997344736" target="_blank" rel="noopener" style="color: #25D366;">WhatsApp</a>
+  </div>
+</header>
+
+<!-- ────────────────────────────────────────────────────────
+     HERO
+──────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- Text side -->
+      <div class="hero-text">
+        <p class="hero-eyebrow reveal from-left">Vista Verde · São José dos Campos</p>
+
+        <h1 class="hero-title reveal from-top d1">
+          Seu próximo<br>
+          <span class="hi">celular</span><br>
+          está aqui.
+        </h1>
+
+        <p class="hero-sub reveal from-bottom d2">
+          As melhores marcas, preços justos e atendimento
+          sem enrolação. Venha visitar ou fale agora.
+        </p>
+
+        <div class="hero-actions reveal from-bottom d3">
+          <a href="#servicos" class="btn btn-blue">
+            <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            Ver Produtos
+          </a>
+          <a href="https://wa.me/5512997344736" class="btn btn-wa" target="_blank" rel="noopener">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Falar Agora
+          </a>
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="phone-wrap reveal from-right d2">
+        <div class="phone-glow" aria-hidden="true"></div>
+
+        <!-- Floating badges -->
+        <div class="badge badge-star" aria-hidden="true">
+          <svg class="badge-ic" viewBox="0 0 20 20" fill="#FBBF24" aria-hidden="true">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          4.9 no Google
+        </div>
+        <div class="badge badge-check" aria-hidden="true">
+          <svg class="badge-ic" viewBox="0 0 20 20" fill="#34D399" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Garantia incluída
+        </div>
+
+        <img
+          src="iphone.png"
+          alt="iPhone 15 — Smart Vale"
+          class="hero-phone-img"
+          width="300"
+          loading="eager"
+        />
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Wave → bg-2 (#0C1128) -->
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
+      <path d="M0,65 C240,130 480,0 720,65 C960,130 1200,20 1440,65 L1440,130 L0,130 Z" fill="#0C1B3E"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     BRANDS
+──────────────────────────────────────────────────────── -->
+<section id="marcas">
+  <div class="container">
+    <div class="brands-hd">
+      <span class="tag reveal from-top">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><circle cx="6" cy="6" r="6"/></svg>
+        Trabalhamos com
+      </span>
+      <h2 class="reveal from-top d1">Principais marcas</h2>
+      <p class="reveal from-top d2">Celulares novos e seminovos com garantia. Escolha a sua.</p>
+    </div>
+
+    <div class="brands-grid">
+      <div class="brand-card reveal from-left d1">
+        <img src="https://cdn.simpleicons.org/samsung/FFFFFF" alt="Samsung" class="brand-logo brand-logo-samsung">
+        <div class="brand-label">SAMSUNG</div>
+        <div class="brand-sub">Galaxy S · A · M series</div>
+      </div>
+      <div class="brand-card reveal from-bottom d2">
+        <img src="https://cdn.simpleicons.org/motorola/E1000F" alt="Motorola" class="brand-logo">
+        <div class="brand-label">Motorola</div>
+        <div class="brand-sub">Edge · Moto G · Razr</div>
+      </div>
+      <div class="brand-card reveal from-bottom d3">
+        <img src="https://cdn.simpleicons.org/apple/F0F0F0" alt="Apple" class="brand-logo">
+        <div class="brand-label">iPhone</div>
+        <div class="brand-sub">Apple — série 13 a 16</div>
+      </div>
+      <div class="brand-card reveal from-bottom d4">
+        <img src="https://cdn.simpleicons.org/xiaomi/FF6900" alt="Xiaomi" class="brand-logo">
+        <div class="brand-label">Xiaomi</div>
+        <div class="brand-sub">Redmi · Note · 14 series</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave → bg (#07090E) -->
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
+      <path d="M0,0 Q360,130 720,40 T1440,80 L1440,130 L0,130 Z" fill="#07090E"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     SERVICES
+──────────────────────────────────────────────────────── -->
+<section id="servicos">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="tag reveal from-left">O que fazemos</span>
+      <h2 class="reveal from-left d1">Do básico ao completo,<br>a gente resolve.</h2>
+      <p class="reveal from-left d2">Venda, conserto, acessório e muito mais. Tudo em um só lugar.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="svc-card reveal from-bottom d1">
+        <div class="svc-icon blue" aria-hidden="true">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <rect x="5" y="2" width="14" height="20" rx="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+        </div>
+        <h3>Celulares Novos</h3>
+        <p>Samsung, Motorola, iPhone, Xiaomi e mais — com nota fiscal e garantia de fábrica.</p>
+      </div>
+
+
+      <div class="svc-card reveal from-bottom d3">
+        <div class="svc-icon teal" aria-hidden="true">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+        </div>
+        <h3>Acessórios</h3>
+        <p>Capinhas, películas, carregadores, fones e tudo que você precisa para proteger e turbinar o celular.</p>
+      </div>
+
+      <div class="svc-card reveal from-bottom d4">
+        <div class="svc-icon purple" aria-hidden="true">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <polyline points="17 1 21 5 17 9"/>
+            <path d="M3 11V9a4 4 0 014-4h14"/>
+            <polyline points="7 23 3 19 7 15"/>
+            <path d="M21 13v2a4 4 0 01-4 4H3"/>
+          </svg>
+        </div>
+        <h3>Compra e Troca</h3>
+        <p>Quer trocar o seu por um modelo mais recente? Avaliamos na hora e facilitamos a troca.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave → bg-3 (#090C1C) -->
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
+      <path d="M0,80 C180,20 360,130 540,60 C720,0 900,120 1080,60 C1260,10 1380,90 1440,60 L1440,130 L0,130 Z" fill="#0C1B3E"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     WHY US
+──────────────────────────────────────────────────────── -->
+<section id="diferenciais">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <span class="tag reveal from-left">Por que a Smart Vale</span>
+        <h2 class="reveal from-left d1" style="margin-top:.75rem; margin-bottom:2.5rem;">
+          Mais que uma loja,<br>um atendimento de verdade.
+        </h2>
+
+        <div class="why-list">
+          <div class="why-item reveal from-left d1">
+            <div class="why-ic" aria-hidden="true">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Garantia em todos os produtos</h3>
+              <p>Celulares novos com garantia de fábrica. Usados com nossa garantia própria de 90 dias.</p>
+            </div>
+          </div>
+
+          <div class="why-item reveal from-left d2">
+            <div class="why-ic" aria-hidden="true">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect x="1" y="4" width="22" height="16" rx="2"/>
+                <line x1="1" y1="10" x2="23" y2="10"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Parcelamento em até 12x</h3>
+              <p>Aceitamos cartão de crédito, débito, Pix e parcelamentos facilitados para você sair com o celular hoje.</p>
+            </div>
+          </div>
+
+          <div class="why-item reveal from-left d3">
+            <div class="why-ic" aria-hidden="true">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Entrega rápida</h3>
+              <p>Saia com o seu celular na hora. Estoque variado e pronto para você levar hoje mesmo.</p>
+            </div>
+          </div>
+
+          <div class="why-item reveal from-left d4">
+            <div class="why-ic" aria-hidden="true">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                <path d="M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Atendimento personalizado</h3>
+              <p>Explicamos as opções, comparamos modelos e te ajudamos a escolher sem pressão de venda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-visual reveal from-right d2">
+        <img src="cesbbye.png" alt="Smart Vale" class="why-photo">
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave → bg (#07090E) -->
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
+      <path d="M0,40 C360,0 720,130 1080,50 C1260,20 1380,90 1440,60 L1440,130 L0,130 Z" fill="#07090E"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     TESTIMONIALS
+──────────────────────────────────────────────────────── -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="dep-hd">
+      <span class="tag reveal from-top">Depoimentos</span>
+      <h2 class="reveal from-top d1">Quem veio, voltou.</h2>
+    </div>
+
+    <div class="dep-carousel-wrap">
+      <div class="dep-track" id="depTrack">
+
+        <!-- 1 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Comprei meu Samsung Galaxy aqui, o atendimento foi impecável e o preço bateu qualquer concorrente da cidade. Já voltei pra comprar capa e virei cliente fiel!"</p>
+          <div class="dep-author">
+            <div class="dep-av a1" aria-hidden="true">MS</div>
+            <div><div class="dep-name">Mariana S.</div><div class="dep-detail">Vista Verde, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Comprei meu Motorola Edge na Smart Vale e fui muito bem atendido. Preço justo, sem enrolação e ainda saí com a película instalada. Nota 10!"</p>
+          <div class="dep-author">
+            <div class="dep-av a2" aria-hidden="true">RA</div>
+            <div><div class="dep-name">Rafael A.</div><div class="dep-detail">Jardim Aquarius, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Melhor loja de celular de São José. Eles explicam tudo direitinho, ajudam a escolher sem forçar nada e têm ótimos preços. Trouxe meu marido e ele também comprou!"</p>
+          <div class="dep-author">
+            <div class="dep-av a3" aria-hidden="true">FC</div>
+            <div><div class="dep-name">Fernanda C.</div><div class="dep-detail">Campo dos Alemães, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Tava procurando o Moto Edge por semanas e em todo lugar o preço era absurdo. Na Smart Vale achei pelo valor certo, sem parcela mirabolante. Recomendo demais!"</p>
+          <div class="dep-author">
+            <div class="dep-av a4" aria-hidden="true">LM</div>
+            <div><div class="dep-name">Lucas M.</div><div class="dep-detail">Jardim São Dimas, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Comprei o Xiaomi Redmi Note 13 parcelado e o atendimento foi excelente. Explicaram tudo sobre o aparelho, configuraram pra mim e ainda colocaram a película. Adorei!"</p>
+          <div class="dep-author">
+            <div class="dep-av a5" aria-hidden="true">PO</div>
+            <div><div class="dep-name">Patrícia O.</div><div class="dep-detail">Parque Industrial, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Fui atrás de um Redmi Note bom e barato. O vendedor me mostrou umas três opções sem pressa, comparou as diferenças e eu escolhi na hora. Custo-benefício imbatível."</p>
+          <div class="dep-author">
+            <div class="dep-av a6" aria-hidden="true">JV</div>
+            <div><div class="dep-name">João V.</div><div class="dep-detail">Urbanova, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Fui só pra comprar uma capinha e acabei saindo com capinha, película de vidro e um carregador rápido. Tudo de qualidade e barato. Loja muito boa mesmo!"</p>
+          <div class="dep-author">
+            <div class="dep-av a1" aria-hidden="true">AR</div>
+            <div><div class="dep-name">Amanda R.</div><div class="dep-detail">Centro, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Fiz a troca do meu celular antigo por um Galaxy A55 e o negócio foi honesto e transparente. Me deram um valor justo na troca e não empurraram nada que eu não precisava."</p>
+          <div class="dep-author">
+            <div class="dep-av a2" aria-hidden="true">BT</div>
+            <div><div class="dep-name">Bruno T.</div><div class="dep-detail">Campos de São José, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Minha vizinha indicou a Smart Vale e não me arrependo nada. Atendimento super humano, sem aquela pressão chata de vendedor. Saí feliz com meu aparelho novo!"</p>
+          <div class="dep-author">
+            <div class="dep-av a3" aria-hidden="true">CH</div>
+            <div><div class="dep-name">Cintia H.</div><div class="dep-detail">Vista Verde, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Comprei um iPhone 13 seminovo aqui e veio em perfeito estado, bateria excelente e com nota fiscal. Muito mais confiável do que comprar de desconhecido na internet."</p>
+          <div class="dep-author">
+            <div class="dep-av a4" aria-hidden="true">RF</div>
+            <div><div class="dep-name">Rodrigo F.</div><div class="dep-detail">Vila Ema, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Entrei sem muita certeza do que queria e em menos de 20 minutos já saí com o aparelho escolhido, configurado e protegido. Sem pressão nenhuma, muito gostoso de comprar."</p>
+          <div class="dep-author">
+            <div class="dep-av a5" aria-hidden="true">NS</div>
+            <div><div class="dep-name">Natalia S.</div><div class="dep-detail">Bosque dos Eucaliptos, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Entendo bastante de celular e posso dizer: o Xiaomi 14 que comprei aqui veio lacrado, original, com nota e preço abaixo do mercado. Estabelecimento sério e confiável."</p>
+          <div class="dep-author">
+            <div class="dep-av a6" aria-hidden="true">DL</div>
+            <div><div class="dep-name">Diego L.</div><div class="dep-detail">Bom Retiro, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Já é minha terceira compra na Smart Vale e continuo voltando porque o atendimento é sempre o mesmo: atencioso, honesto e sem enrolação. Não troco por nenhuma outra."</p>
+          <div class="dep-author">
+            <div class="dep-av a1" aria-hidden="true">TB</div>
+            <div><div class="dep-name">Tatiane B.</div><div class="dep-detail">Jardim São Dimas, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Comprei três aparelhos de uma vez para minha família e o desconto foi ótimo. O atendente teve paciência pra explicar cada modelo pra cada um de nós. Voltaremos com certeza!"</p>
+          <div class="dep-author">
+            <div class="dep-av a2" aria-hidden="true">HG</div>
+            <div><div class="dep-name">Henrique G.</div><div class="dep-detail">Parque Residencial, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 15 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Parcelei meu Samsung A35 em 12 vezes sem juros e a parcela ficou bem tranquila. Achei que ia ter pegadinha mas não teve nada disso. Loja honesta e preço real."</p>
+          <div class="dep-author">
+            <div class="dep-av a3" aria-hidden="true">CW</div>
+            <div><div class="dep-name">Camila W.</div><div class="dep-detail">Putim, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 16 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Fui comprar capinha e encontrei de tudo: capas, películas, fones, carregadores, cabos. Grande variedade e tudo bem precificado. Ótima loja pra acessórios também!"</p>
+          <div class="dep-author">
+            <div class="dep-av a4" aria-hidden="true">MA</div>
+            <div><div class="dep-name">Marcelo A.</div><div class="dep-detail">Santana, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 17 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Comprei um celular de presente pra minha mãe e o vendedor me ajudou a escolher o modelo mais fácil de usar pra ela. Foi muito além do que eu esperava de um atendimento. Parabéns!"</p>
+          <div class="dep-author">
+            <div class="dep-av a5" aria-hidden="true">GN</div>
+            <div><div class="dep-name">Gabriela N.</div><div class="dep-detail">Jardim das Indústrias, SJC</div></div>
+          </div>
+        </div>
+
+        <!-- 18 -->
+        <div class="dep-card">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="dep-txt">"Já são dois anos comprando celulares corporativos para minha empresa aqui. Preço, prazo e suporte sempre impecáveis. É o parceiro certo pra quem precisa de confiança."</p>
+          <div class="dep-author">
+            <div class="dep-av a6" aria-hidden="true">FE</div>
+            <div><div class="dep-name">Felipe C.</div><div class="dep-detail">Centro, SJC</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave → bg-2 (#0C1128) -->
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
+      <path d="M0,0 C480,140 960,0 1440,80 L1440,130 L0,130 Z" fill="#0C1B3E"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     LOCATION
+──────────────────────────────────────────────────────── -->
+<section id="localizacao">
+  <div class="container">
+    <div class="loc-grid">
+      <div class="loc-info">
+        <span class="tag reveal from-left">Como chegar</span>
+        <h2 class="reveal from-left d1" style="margin-top:.75rem;">Estamos te<br>esperando.</h2>
+
+        <div class="loc-items" style="margin-top:1.75rem;">
+          <div class="loc-item reveal from-left d2">
+            <div class="loc-ic" aria-hidden="true">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Endereço</strong>
+              <span>R. Argentina, 50 - Sala 6<br>Vista Verde, São José dos Campos - SP<br>CEP 12223-000</span>
+            </div>
+          </div>
+
+          <div class="loc-item reveal from-left d3">
+            <div class="loc-ic" aria-hidden="true">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Horário de funcionamento</strong>
+              <span>Segunda a Sexta: 9h às 18h<br>Sábado: 9h às 13h<br>Domingo: fechado</span>
+            </div>
+          </div>
+
+          <div class="loc-item reveal from-left d4">
+            <div class="loc-ic" aria-hidden="true">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>WhatsApp</strong>
+              <span>(12) 99734-4736</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal from-left d5">
+          <a href="https://wa.me/5512997344736" class="btn btn-wa" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Mandar mensagem
+          </a>
+        </div>
+      </div>
+
+      <div class="map-box reveal from-right d2">
+        <iframe
+          title="Localização Smart Vale — R. Argentina, 50, Vista Verde, São José dos Campos"
+          src="https://maps.google.com/maps?q=R.+Argentina,+50,+Sala+6,+Vista+Verde,+S%C3%A3o+Jos%C3%A9+dos+Campos,+SP,+12223-000&t=&z=17&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     FOOTER
+──────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#hero" class="nav-logo" style="display:inline-flex;">
+          Smart<span class="dot">Vale</span>
+        </a>
+        <p class="foot-desc">
+          Loja de celulares e acessórios em Vista Verde, São José dos Campos.
+          Atendimento de qualidade, preços justos e garantia em tudo.
+        </p>
+      </div>
+
+      <div>
+        <div class="foot-hl">Links rápidos</div>
+        <ul class="foot-links">
+          <li><a href="#marcas">Marcas</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#diferenciais">Sobre nós</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#localizacao">Localização</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="foot-hl">Contato</div>
+        <ul class="foot-links">
+          <li><a href="https://wa.me/5512997344736" target="_blank" rel="noopener">(12) 99734-4736</a></li>
+          <li><a href="https://maps.google.com/?q=R.+Argentina,+50,+Vista+Verde,+São+José+dos+Campos" target="_blank" rel="noopener">R. Argentina, 50 — Sala 6</a></li>
+          <li><span style="cursor:default;">Vista Verde, SJC — SP</span></li>
+          <li><span style="cursor:default;">CEP 12223-000</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2025 Smart Vale. Todos os direitos reservados.</span>
+      <span>Vista Verde · São José dos Campos · SP</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ────────────────────────────────────────────────────────
+     FLOATING WHATSAPP
+──────────────────────────────────────────────────────── -->
+<a
+  href="https://wa.me/5512997344736"
+  class="wa-float"
+  target="_blank"
+  rel="noopener"
+  aria-label="Falar pelo WhatsApp: (12) 99734-4736"
+>
+
+  <span class="wa-tooltip" aria-hidden="true">Falar no WhatsApp</span>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ────────────────────────────────────────────────────────
+     SCRIPTS
+──────────────────────────────────────────────────────── -->
+<script>
+  /* ── Nav solid on scroll ───────────────────────── */
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    nav.classList.toggle('solid', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Mobile menu ───────────────────────────────── */
+  const hamBtn  = document.getElementById('hamBtn');
+  const mobNav  = document.getElementById('mobNav');
+  const mobClose = document.getElementById('mobClose');
+  const mobLinks = mobNav.querySelectorAll('a');
+
+  function openMob() {
+    mobNav.classList.add('open');
+    hamBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMob() {
+    mobNav.classList.remove('open');
+    hamBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  hamBtn.addEventListener('click', openMob);
+  mobClose.addEventListener('click', closeMob);
+  mobLinks.forEach(l => l.addEventListener('click', closeMob));
+
+  /* ── Scroll reveal (Intersection Observer) ─────── */
+  const revealEls = document.querySelectorAll('.reveal');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealEls.forEach(el => io.observe(el));
+
+  /* ── Animated number counters ──────────────────── */
+  function animateCount(el, target, suffix) {
+    const isDecimal = String(target).includes('.');
+    const duration  = 1800;
+    const start     = performance.now();
+    const from      = 0;
+
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = from + (target - from) * ease;
+      el.textContent = (isDecimal ? current.toFixed(1) : Math.round(current)) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  const statNums = document.querySelectorAll('.stat-num');
+  const statsIO  = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el   = entry.target;
+      const text = el.textContent.trim();
+
+      if (text.startsWith('+')) {
+        const n = parseInt(text.replace(/\D/g,''));
+        animateCount(el, n, '+');
+      } else if (text.includes('★')) {
+        animateCount(el, 4.9, '★');
+      } else if (text.includes('<')) {
+        el.textContent = '<24h';
+      } else {
+        const n = parseInt(text.replace(/\D/g,''));
+        if (!isNaN(n)) animateCount(el, n, '+');
+      }
+      statsIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  statNums.forEach(el => statsIO.observe(el));
+
+  /* ── Smooth anchor scroll ───────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* ── Testimonials infinite carousel clone ────── */
+  const depTrack = document.getElementById('depTrack');
+  if (depTrack) depTrack.innerHTML += depTrack.innerHTML;
+</script>
+
+</body>
+</html>
